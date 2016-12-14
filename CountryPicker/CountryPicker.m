@@ -57,6 +57,25 @@
 // delegate doesn't use _ prefix to avoid name clash with superclass
 @synthesize delegate, labelFont = _labelFont;
 
++ (UIImage *)imageForCountryCode:(NSString *)countryCode {
+    NSString *imagePath = [NSString stringWithFormat:@"CountryPicker.bundle/%@", countryCode];
+    UIImage *image;
+    if ([[UIImage class] respondsToSelector:@selector(imageNamed:inBundle:compatibleWithTraitCollection:)])
+    {
+        image = [UIImage imageNamed:imagePath inBundle:[NSBundle bundleForClass:[CountryPicker class]] compatibleWithTraitCollection:nil];
+    }
+    else
+    {
+        image = [UIImage imageNamed:imagePath];
+    }
+    return image;
+}
+
++ (NSString *)countryNameForCountryCode:(NSString *)countryCode {
+    NSDictionary *countryNamesByCode = [CountryPicker countryNamesByCode];
+    return [countryNamesByCode valueForKey:countryCode];
+}
+
 + (NSArray *)countryNames
 {
     static NSArray *_countryNames = nil;

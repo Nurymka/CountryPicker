@@ -66,6 +66,10 @@
 /// Returns a dictionary of country codes, keyed by country name.
 + (NSDictionary<NSString *, NSString *> *)countryCodesByName;
 
++ (UIImage *)imageForCountryCode:(NSString *)countryCode;
+
++ (NSString *)countryNameForCountryCode:(NSString *)countryCode;
+
 /// The delegate. This implements the CountryPickerDelegate protocol,
 /// and is notified when a country is selected.
 @property (nonatomic, weak) id<CountryPickerDelegate> delegate;
